@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const withdraw = () => {
+    const router  = useRouter()
   const [withdraw, setWithDraw] = useState({
     amount: "",
   });
@@ -32,7 +34,8 @@ const withdraw = () => {
           }
         );
         if (response.ok) {
-         alert("Withdrawn successfully")
+         alert("Input your pin to confirm withdraw")
+         router.push("/withdraw_Confirm")
         }
   
         if (response.status === 400) {

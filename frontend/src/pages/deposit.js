@@ -37,7 +37,7 @@ const Deposit = () => {
       }
     };
 
-    //   sendData();
+      sendData();
   };
   return (
     <div>
