@@ -17,8 +17,25 @@ const login = () => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log('Form data:', formData);
+    const sendData = async () => {
+      const response = await fetch(
+        '/',
+        {
+          method:"POST",
+          headers:{
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData)
+        }
+      )
+      if(response.ok){
+        alert("login succesfully")
+      }
+      if(response.status === 400){
+        console.log("Error:", response.status)
+      }
+    }
   };
-
   return (
     <div>
       <h1>Login</h1>

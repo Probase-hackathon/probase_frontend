@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+
 
 const index = () => {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     First_Name: '',
     Last_Name: '',
     email: '',
     password: '',
     confirm_password: '',
+    pin: '',
   });
 
   const handleChange = e => {
@@ -15,11 +19,35 @@ const index = () => {
       ...prevState,
       [name]: value
     }));
-  };
 
+ 
+  };
+  
   const handleSubmit = e => {
     e.preventDefault();
     console.log('Form data:', formData);
+    
+    const sendData = async () => {
+    const response = await fetch(
+      '/',
+      {
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      }
+    )
+    if(response.ok){
+      alert("Signup succesfully")
+      router.push('/login')
+    }
+    if(response.status === 400){
+      console.log("Error:", response.status)
+    }
+  }
+
+  sendData()
   };
 
   return (
@@ -77,6 +105,17 @@ const index = () => {
             id="confirm_password"
             name="confirm_password"
             value={formData.confirm_password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="pin">Pin:</label>
+          <input
+            type="password"
+            id="pin"
+            name="pin"
+            value={formData.pin}
             onChange={handleChange}
             required
           />
