@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 
-const LoginForm = () => {
+const login = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
     email: '',
-    password: ''
+    password: '', 
   });
 
   const handleChange = e => {
@@ -19,35 +17,12 @@ const LoginForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log('Form data:', formData);
-    // perform validation or send data to server 
   };
 
   return (
     <div>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">First Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Last Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
         <div>
           <label htmlFor="email">Email:</label>
           <input
@@ -75,5 +50,4 @@ const LoginForm = () => {
     </div>
   );
 };
-
-export default LoginForm;
+export default login;
