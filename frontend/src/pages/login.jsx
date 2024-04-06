@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 
-const index = () => {
+const LoginForm = () => {
   const [formData, setFormData] = useState({
-    First_Name: '',
-    Last_Name: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    password: '',
-    confirm_password: '',
+    password: ''
   });
 
   const handleChange = e => {
@@ -20,30 +19,31 @@ const index = () => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log('Form data:', formData);
+    // perform validation or send data to server 
   };
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="First_Name">First Name:</label>
+          <label htmlFor="name">First Name:</label>
           <input
             type="text"
             id="name"
-            name="First_Name"
-            value={formData.First_Name}
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label htmlFor="Last_Name">Last Name:</label>
+          <label htmlFor="name">Last Name:</label>
           <input
             type="text"
             id="name"
-            name="Last_Name"
-            value={formData.Last_Name}
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
           />
@@ -70,21 +70,10 @@ const index = () => {
             required
           />
         </div>
-        <div>
-          <label htmlFor="confirm_password">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirm_password"
-            name="confirm_password"
-            value={formData.confirm_password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Signup</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
 };
 
-export default index;
+export default LoginForm;

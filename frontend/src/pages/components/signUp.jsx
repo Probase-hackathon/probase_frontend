@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 
-const index = () => {
+const SignupForm = () => {
   const [formData, setFormData] = useState({
-    First_Name: '',
-    Last_Name: '',
+    Name: '',
+    lName: '',
     email: '',
     password: '',
-    confirm_password: '',
+    confirmPassword: ''
   });
 
   const handleChange = e => {
-    const { name, value } = e.target;
+    const { fname, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
-      [name]: value
+      [fname]: value
     }));
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log('Form data:', formData);
+    // perform validation or send data to server 
   };
 
   return (
@@ -27,23 +28,23 @@ const index = () => {
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="First_Name">First Name:</label>
+          <label htmlFor="name">First Name:</label>
           <input
             type="text"
             id="name"
-            name="First_Name"
-            value={formData.First_Name}
+            name="name"
+            value={formData.fName}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label htmlFor="Last_Name">Last Name:</label>
+          <label htmlFor="name">Last Name:</label>
           <input
             type="text"
-            id="name"
-            name="Last_Name"
-            value={formData.Last_Name}
+            id="lname"
+            name="name"
+            value={formData.lName}
             onChange={handleChange}
             required
           />
@@ -70,21 +71,10 @@ const index = () => {
             required
           />
         </div>
-        <div>
-          <label htmlFor="confirm_password">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirm_password"
-            name="confirm_password"
-            value={formData.confirm_password}
-            onChange={handleChange}
-            required
-          />
-        </div>
         <button type="submit">Signup</button>
       </form>
     </div>
   );
 };
 
-export default index;
+export default SignupForm;
