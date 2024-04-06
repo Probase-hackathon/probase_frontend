@@ -10,5 +10,4 @@ const dashboard = () => {
     </div>
   );
 };
-
 export default dashboard;

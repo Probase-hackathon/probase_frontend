@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const login = () => {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     email: '',
     password: '', 
@@ -30,8 +32,10 @@ const login = () => {
       )
       if(response.ok){
         alert("login succesfully")
+        router.push('/dashboard')
       }
       if(response.status === 400){
+        alert("There was an error. Please try again.")
         console.log("Error:", response.status)
       }
     }
